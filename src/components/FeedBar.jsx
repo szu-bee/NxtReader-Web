@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/FeedBar.css';
+import '../styles/FeedBar.css';
 
 import rssLogo from '../assets/rss.png';
 import catPhoto from '../assets/cat-pet-animal-domestic-104827.jpeg';
