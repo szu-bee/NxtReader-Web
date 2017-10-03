@@ -9,14 +9,14 @@ function FeedList(props) {
   const feedMsgs = props.feedMsgs;
 
   const listItems = feedMsgs.map(feedMsg =>
-    <div className="feed-list">
+    <li className="feed-list">
       <img src={slothPhoto} alt=""/>
       <span>{feedMsg.feedTitle}</span>
       <span className="article-count">{feedMsg.articleCount}</span>
-    </div>
+    </li>
   );
   return (
-    <div className="feed-lists">{listItems}</div>
+    <ul className="feed-lists">{listItems}</ul>
   );
 }
 
