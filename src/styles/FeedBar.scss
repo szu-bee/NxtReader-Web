@@ -1,0 +1,94 @@
+.feed-bar {
+  background-color: rgb(110, 69, 28);
+  color: white;
+  height: 100vh;
+  width: 16.6vw;
+
+  .logo-block {
+    text-align: center;
+    margin-bottom: 12px;
+
+    img {
+      width: 60px;
+    }
+
+    .date {
+      opacity: .5;
+      font-size: .8em;
+    }
+  }
+
+  .lists {
+    img {
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: 4px;
+    }
+
+    .unread {
+      display: flex;
+      justify-content: space-between;
+      background: rgb(70, 39, 5);
+      opacity: .8;
+      padding: 8px;
+      margin-bottom: 12px;
+
+      div {
+        span {
+          position: relative;
+          top: -4px;
+        }
+      }
+      .article-count {
+        position: relative;
+        top: 4px;
+      }
+    }
+              
+    .feed-lists-content {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      .feed-lists {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 400px;
+        width: 100%;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .feed-list {
+          display: flex;
+          justify-content: space-between;
+          opacity: .8;
+          padding: 8px;
+
+          div {
+            span {
+              position: relative;
+              top: -4px;
+            }
+          }
+          .article-count {
+            position: relative;
+            top: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(70, 39, 5);
+    width: inherit;
+    height: 36px;
+    padding: 12px 8px;
+    box-sizing: border-box;
+  }
+}
