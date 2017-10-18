@@ -1,6 +1,8 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  column-count: 3;
-  background: rgb(114, 106, 96);
+  background-color: rgb(117, 86, 55);
+
+  .main-interface {
+    display: flex;
+    column-count: 3;
+  }
 }

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import '../styles/FeedBar.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
 
-import rssLogo from '../assets/rss.png';
 import slothPhoto from '../assets/sloth.jpg';
 import rssIcon from '../assets/RSS-icon.png';
 
@@ -68,7 +67,7 @@ class FeedBar extends Component {
     return (
       <div className="feed-bar">
         <div className="logo-block">
-          <img src={rssLogo} alt="rss-logo"/>
+          <i className="fa fa-rss fa-3x"></i>
           <div>RSS</div>
           <div className="date">Today, 1:43PM</div>
         </div>

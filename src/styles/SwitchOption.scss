@@ -1,0 +1,27 @@
+.switch-option {
+  display: flex;
+  width: 160px;
+  height: 26px;
+  margin: 0 auto;
+  padding-top: 2px;
+
+  .icon-box {
+    border: 1px solid white;
+
+    .fa {
+      padding: 4px 12px;
+    }
+
+    .fa-circle {
+      background: #fff;
+    }
+  }
+
+  .fa-close {
+    padding: 6px 0 0 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
