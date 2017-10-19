@@ -1,0 +1,89 @@
+.article-list-bar {
+  height: calc(100vh - 66px);
+  width: 18vw;
+  color: white;
+
+  .article-list-content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0 8px;
+
+    .article-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: white;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .article-list-item {
+        padding: 1.2em 0;
+
+        .date {
+          font-size: .7em;
+          padding: .8em 0;
+        }
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          img {
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 8px;
+          }
+
+          .writing {
+            display: flex;
+            flex-direction: column;
+
+            .feed-name {
+              font-size: .8em;
+              opacity: .6;
+            }
+
+            .article-title {
+              font-size: .9em;
+              margin: 0;
+            }
+
+            .article-summary {
+              font-size: .78em;
+              opacity: .7;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(105, 97, 88);
+    width: inherit;
+    padding: 12px 8px;
+    box-sizing: border-box;
+
+    span {
+      font-size: .9em;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+    }
+
+    i:hover {
+      cursor: pointer;
+    }
+  }
+}

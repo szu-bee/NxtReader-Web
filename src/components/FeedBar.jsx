@@ -8,56 +8,57 @@ import rssIcon from '../assets/RSS-icon.png';
 function FeedList(props) {
   const feedMsgs = props.feedMsgs;
 
-  const listItems = feedMsgs.map(feedMsg => <li className="feed-list">
+  const listItems = feedMsgs.map(feedMsg => <li className="feed-list-item">
     <div>
-      <img src={rssIcon} alt=""/>
-      <span>{feedMsg.feedTitle}</span>
+      <img src={rssIcon} alt="" />
+      <span>{feedMsg.feedName}</span>
     </div>
     <span className="article-count">{feedMsg.articleCount}</span>
   </li>);
+
   return (
-    <div className="feed-lists-content">
-      <ul className="feed-lists">{listItems}</ul>
+    <div className="feed-list-content">
+      <ul className="feed-list">{listItems}</ul>
     </div>
   );
 }
 
 const feedMsgs = [
   {
-    feedTitle: 'hhh',
+    feedName: 'hhh',
     articleCount: 11
   }, {
-    feedTitle: 'dkgs',
+    feedName: 'dkgs',
     articleCount: 22
   }, {
-    feedTitle: 'skf',
-    articleCount: 33
+    feedName: 'skf',
+    articleCount: 333
   }, {
-    feedTitle: 'dskjf',
+    feedName: 'dskjf',
     articleCount: 66
   }, {
-    feedTitle: 'sfs',
+    feedName: 'sfs',
     articleCount: 23
   }, {
-    feedTitle: 'sfsdfs',
+    feedName: 'sfsdfs',
     articleCount: 33
   }, {
-    feedTitle: 'allk',
+    feedName: 'allk',
     articleCount: 34
   }, {
-    feedTitle: 'skf',
+    feedName: 'skf',
     articleCount: 33
   }, {
-    feedTitle: 'dskjf',
+    feedName: 'dskjf',
     articleCount: 66
   }, {
-    feedTitle: 'sfs',
+    feedName: 'sfs',
     articleCount: 23
   }, {
-    feedTitle: 'sfsdfs',
+    feedName: 'sfsdfs',
     articleCount: 33
   }, {
-    feedTitle: 'allk',
+    feedName: 'allk',
     articleCount: 34
   }
 ]
@@ -72,7 +73,7 @@ class FeedBar extends Component {
           <div className="date">Today, 1:43PM</div>
         </div>
         <div className="lists">
-          <div className="unread">
+          <div className="unread-list">
             <div>
               <img src={slothPhoto} alt="unread"/>
               <span>Unread</span>
