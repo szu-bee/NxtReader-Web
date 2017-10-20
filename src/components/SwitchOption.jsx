@@ -11,7 +11,6 @@ class SwitchOption extends Component {
           <i className="fa fa-circle"></i>
           <i className="fa fa-bars"></i>
         </div>
-        <div><i className="fa fa-close"></i></div>
       </div>
     );
   }

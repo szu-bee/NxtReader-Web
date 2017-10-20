@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SwitchOption from './SwitchOption';
 import '../styles/ArticleListBar.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
 
@@ -66,6 +67,7 @@ class ArticleListBar extends Component {
   render() {
     return (
       <div className="article-list-bar">
+        <SwitchOption />
         <ArticleList articleMsgs={articleMsgs} />
         <footer>
           <i className="fa fa-check-circle"></i>
