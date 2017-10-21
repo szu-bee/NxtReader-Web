@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../styles/SwitchOption.css';
+import '../styles/css/styles/SwitchOption.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
 
 class SwitchOption extends Component {

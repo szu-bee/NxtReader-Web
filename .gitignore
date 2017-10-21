@@ -21,3 +21,4 @@ yarn-debug.log*
 yarn-error.log*
 
 **/styles/*.css
+**/styles/css/assets/**/*.css

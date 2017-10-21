@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SwitchOption from './SwitchOption';
-import '../styles/ArticleListBar.css';
+import '../styles/css/styles/ArticleListBar.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
 
 import slothPhoto from '../assets/sloth.jpg';

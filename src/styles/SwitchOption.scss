@@ -1,8 +1,8 @@
 .switch-option {
   display: flex;
-  width: 160px;
+  flex-direction: row-reverse;
+  align-items: flex-end;
   height: 26px;
-  margin: 0 auto;
   padding-top: 2px;
   color: white;
 

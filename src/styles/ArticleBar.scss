@@ -1,8 +1,7 @@
 .article-bar {
   display: flex;
   flex-flow: column;
-  margin-left: 16px;
-  width: calc(100vw - 16.6vw - 20vw);
+  margin-left: 8px;
   height: 100vh;
   color: white;
 
@@ -15,12 +14,12 @@
     .tools-top {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
+      padding: 12px 4px;
 
       .tools-top-right {
         display: flex;
         justify-content: space-around;
-        width: 100px;
+        width: 9em;
       }
     }
   
@@ -32,6 +31,15 @@
       overflow-y: auto;
       &::-webkit-scrollbar {
         display: none;
+      }
+
+      h2 {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      p {
+        white-space: normal;
       }
     }
   }

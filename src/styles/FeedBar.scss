@@ -1,94 +1,98 @@
 .feed-bar {
-  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
   width: 16.6vw;
   color: white;
 
-  .logo-block {
-    text-align: center;
-    margin: 12px;
+  .main {
+    flex: 1;
 
-    .date {
-      opacity: .5;
-      font-size: .8em;
-    }
-  }
-
-  .lists {
-    img {
-      width: 1.5em;
-      height: 1.5em;
-      margin-right: 4px;
-    }
-
-    .unread-list {
-      display: flex;
-      justify-content: space-between;
-      background: rgb(131, 84, 37);
-      opacity: .8;
-      padding: 8px;
-      margin-bottom: 12px;
-
-      &:hover {
-        background: rgb(134, 90, 43);
-        cursor: pointer;
-      }
-
-      div {
-        span {
-          position: relative;
-          top: -4px;
-        }
+    .logo-block {
+      text-align: center;
+      margin: 12px;
+  
+      .date {
+        opacity: .5;
+        font-size: .8em;
       }
     }
-              
-    .feed-list-content {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-
-      .feed-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        height: 66vh;
-        width: 100%;
-        overflow-y: auto;
-        &::-webkit-scrollbar {
-          display: none;
+  
+    .lists {
+      img {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 4px;
+      }
+  
+      .unread-list {
+        display: flex;
+        justify-content: space-between;
+        opacity: .8;
+        padding: 8px;
+        margin-bottom: 12px;
+  
+        &:hover {
+          background: rgb(134, 90, 43);
+          cursor: pointer;
         }
-
-        .feed-list-item {
-          display: flex;
-          justify-content: space-between;
-          opacity: .8;
-          padding: 8px;
-
-          &:hover {
-            background: rgb(148, 103, 59);
-            cursor: pointer;
+  
+        div {
+          span {
+            position: relative;
+            top: -4px;
           }
-
-          div {
-            span {
-              position: relative;
-              top: -4px;
+        }
+      }
+                
+      .feed-list-content {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+  
+        .feed-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          height: 67vh;
+          width: 100%;
+          overflow-y: auto;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+  
+          .feed-list-item {
+            display: flex;
+            justify-content: space-between;
+            opacity: .8;
+            padding: 8px;
+  
+            &:hover {
+              background: rgb(148, 103, 59);
+              cursor: pointer;
+            }
+  
+            div {
+              span {
+                position: relative;
+                top: -4px;
+              }
             }
           }
         }
       }
-    }
-
-    .article-count {
-      position: relative;
-      top: 4px;
-      opacity: .5;
+  
+      .article-count {
+        position: relative;
+        top: 4px;
+        opacity: .5;
+      }
     }
   }
 
   footer {
     display: flex;
     justify-content: space-between;
-    background: rgb(104, 89, 71);
     width: inherit;
     padding: 12px 8px;
     box-sizing: border-box;
