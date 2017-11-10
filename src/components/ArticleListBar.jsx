@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import SwitchOption from './SwitchOption';
 import '../styles/css/styles/ArticleListBar.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
@@ -11,7 +11,6 @@ function ArticleList(props) {
 
   const listItems = articleMsgs.map(articleMsg => 
     <li className="article-list-item">
-      <div className="date">{articleMsg.date}</div>
       <div>
         <img src={slothPhoto} alt=""/>
         <div className="writing">
@@ -31,35 +30,41 @@ function ArticleList(props) {
 
 const articleMsgs = [
   {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }, {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }, {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }, {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }, {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }, {
-    date: 'SUNDAY,24 SEPTEMNER 2017',
     feedName: 'hhh',
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
-    articleSummary: 'skldfhuafsjfnjkjsdf...'    
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
+  }, {
+    feedName: 'hhh',
+    articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
+  }, {
+    feedName: 'hhh',
+    articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
+  }, {
+    feedName: 'hhh',
+    articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
+    articleSummary: 'skldfhuafsjfnjkjsdf...'
   }
 ]
 
@@ -67,8 +72,8 @@ class ArticleListBar extends Component {
   render() {
     return (
       <div className="article-list-bar">
-        <SwitchOption />
-        <ArticleList articleMsgs={articleMsgs} />
+        <SwitchOption/>
+        <ArticleList articleMsgs={articleMsgs}/>
         <footer>
           <i className="fa fa-check-circle"></i>
           <span>11 items</span>

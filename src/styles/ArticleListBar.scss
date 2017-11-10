@@ -1,6 +1,6 @@
 .article-list-bar {
   height: calc(100vh - 68px);
-  width: 20vw;
+  width: 19vw;
   color: white;
 
   .article-list-content {
@@ -22,17 +22,12 @@
       }
 
       .article-list-item {
-        padding: 1em 0;
+        padding: .2em 0;
 
-        div.date {
-          font-size: .7em;
-          padding: .8em 0;
-        }
-
-        div:nth-child(2) {
+        div {
           display: flex;
           justify-content: space-between;
-          padding: 4px;
+          margin: 4px;
 
           &:hover {
             background: rgb(138, 111, 87);
