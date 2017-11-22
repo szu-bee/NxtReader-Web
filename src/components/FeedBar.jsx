@@ -8,13 +8,14 @@ import rssIcon from '../assets/RSS-icon.png';
 function FeedList(props) {
   const feedMsgs = props.feedMsgs;
 
-  const listItems = feedMsgs.map(feedMsg => <li className="feed-list-item">
-    <div>
-      <img src={rssIcon} alt="" />
-      <span>{feedMsg.feedName}</span>
-    </div>
-    <span className="article-count">{feedMsg.articleCount}</span>
-  </li>);
+  const listItems = feedMsgs.map(feedMsg => 
+    <li className="feed-list-item">
+      <div>
+        <img src={rssIcon} alt="" />
+        <span>{feedMsg.feedName}</span>
+      </div>
+      <span className="article-count">{feedMsg.articleCount}</span>
+    </li>);
 
   return (
     <div className="feed-list-content">

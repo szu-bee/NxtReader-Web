@@ -4,10 +4,9 @@
   align-items: flex-end;
   height: 26px;
   padding-top: 2px;
-  color: white;
 
   .icon-box {
-    border: 1px solid white;
+    border: 1px solid rgb(210, 211, 182);
     border-radius: .5px;
 
     .fa {
@@ -15,8 +14,7 @@
     }
 
     .fa-circle {
-      background: #fff;
-      color: black;
+      background: rgb(223, 205, 175);
     }
   }
 
