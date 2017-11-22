@@ -7,7 +7,6 @@ import slothPhoto from '../assets/sloth.jpg';
 
 function ArticleList(props) {
   const articleMsgs = props.articleMsgs;
-  console.log(articleMsgs);
 
   const listItems = articleMsgs.map(articleMsg => 
     <li className="article-list-item">
@@ -68,6 +67,11 @@ const articleMsgs = [
   }
 ]
 
+function hideList(e) {
+  const listBar = document.querySelector('.article-list-bar');
+  listBar.style.display = 'none';
+}
+
 class ArticleListBar extends Component {
   render() {
     return (
@@ -79,7 +83,7 @@ class ArticleListBar extends Component {
           <span>11 items</span>
           <div>
             <i className="fa fa-search"></i>
-            <i className="fa fa-chevron-left"></i>
+            <i className="fa fa-chevron-left" onClick={hideList}></i>
           </div>
         </footer>
       </div>
