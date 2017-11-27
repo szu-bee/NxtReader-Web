@@ -13,7 +13,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o css/",
+    "build-css": "node-sass-chokidar src/ -o src/styles/css/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/styles/css/ --watch",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
