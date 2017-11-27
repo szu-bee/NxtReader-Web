@@ -2,27 +2,20 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-end;
-  height: 26px;
-  padding-top: 2px;
+  height: 1.6em;
+  padding: .3em;
 
   .icon-box {
-    border: 1px solid rgb(210, 211, 182);
-    border-radius: .5px;
+    border: 1px solid rgb(219, 208, 208);
+    border-radius: .2em;
 
     .fa {
-      padding: 4px 12px;
+      font-size: .9em;
+      padding: .4em .8em;
     }
 
     .fa-circle {
-      background: rgb(223, 205, 175);
-    }
-  }
-
-  .fa-close {
-    padding: 6px 0 0 16px;
-
-    &:hover {
-      cursor: pointer;
+      background-color: rgb(231, 215, 215);
     }
   }
 }

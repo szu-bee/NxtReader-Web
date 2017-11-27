@@ -11,7 +11,7 @@ class ArticleBar extends Component {
             <div className="tools-top-right">
               <i className="fa fa-circle-o"></i>
               <i className="fa fa-star"></i>
-              <i className="fa fa-upload"></i>
+              <i className="fa fa-tag"></i>
             </div>
           </div>
           <div className="article-content">
@@ -29,12 +29,9 @@ class ArticleBar extends Component {
             </p>
           </div>
         </div>
-        <div className="tools-bottom">
-          <i className="fa fa-tag"></i>
+        <footer>
           <i className="fa fa-chevron-down"></i>
-          <span>Readability<i className="fa fa-angle-down"></i>
-          </span>
-        </div>
+        </footer>
       </div>
     );
   }

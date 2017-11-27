@@ -1,28 +1,10 @@
 import React, {Component} from 'react';
+import FeedList from './FeedList';
 import '../styles/css/styles/FeedBar.css';
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
 
 import slothPhoto from '../assets/sloth.jpg';
-import rssIcon from '../assets/RSS-icon.png';
 
-function FeedList(props) {
-  const feedMsgs = props.feedMsgs;
-
-  const listItems = feedMsgs.map(feedMsg => 
-    <li className="feed-list-item">
-      <div>
-        <img src={rssIcon} alt="" />
-        <span>{feedMsg.feedName}</span>
-      </div>
-      <span className="article-count">{feedMsg.articleCount}</span>
-    </li>);
-
-  return (
-    <div className="feed-list-content">
-      <ul className="feed-list">{listItems}</ul>
-    </div>
-  );
-}
 
 const feedMsgs = [
   {
@@ -43,6 +25,24 @@ const feedMsgs = [
   }, {
     feedName: 'sfsdfs',
     articleCount: 33
+  }, {
+    feedName: 'allk',
+    articleCount: 34
+  }, {
+    feedName: 'skf',
+    articleCount: 33
+  }, {
+    feedName: 'dskjf',
+    articleCount: 66
+  }, {
+    feedName: 'sfs',
+    articleCount: 23
+  }, {
+    feedName: 'sfsdfs',
+    articleCount: 33
+  }, {
+    feedName: 'allk',
+    articleCount: 34
   }, {
     feedName: 'allk',
     articleCount: 34
