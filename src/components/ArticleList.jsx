@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import '../styles/css/styles/ArticleList.css';
-import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
+import React, {Component} from 'react'
+import '../styles/css/styles/ArticleList.css'
+import '../assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
-import slothPhoto from '../assets/sloth.jpg';
+import slothPhoto from '../assets/sloth.jpg'
 
 function ArticleList(props) {
-  const articleMsgs = props.articleMsgs;
+  const articleMsgs = props.articleMsgs
 
   const listItems = articleMsgs.map(articleMsg => 
     <li className="article-list-item">
@@ -17,13 +17,13 @@ function ArticleList(props) {
           <p className="article-summary">{articleMsg.articleSummary}</p>
         </div>
       </div>
-    </li>);
+    </li>)
 
   return (
     <div className="article-list-content">
       <ul className="article-list">{listItems}</ul>
     </div>
-  );
+  )
 }
 
-export default ArticleList;
+export default ArticleList

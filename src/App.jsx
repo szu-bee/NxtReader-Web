@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './styles/css/styles/App.css';
+import React, { Component } from 'react'
+import './styles/css/styles/App.css'
 
-import FeedBar from './components/FeedBar';
-import ArticleListBar from './components/ArticleListBar';
-import ArticleBar from './components/ArticleBar';
+import FeedBar from './components/FeedBar'
+import ArticleListBar from './components/ArticleListBar'
+import ArticleBar from './components/ArticleBar'
 
 class App extends Component {
   render() {
@@ -13,8 +13,8 @@ class App extends Component {
         <ArticleListBar />
         <ArticleBar />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

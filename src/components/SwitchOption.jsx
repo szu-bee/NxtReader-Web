@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import '../styles/css/styles/SwitchOption.css';
-import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
+import React, {Component} from 'react'
+import '../styles/css/styles/SwitchOption.css'
+import '../assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
 class SwitchOption extends Component {
   render() {
@@ -12,8 +12,8 @@ class SwitchOption extends Component {
           <i className="fa fa-bars"></i>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default SwitchOption;
+export default SwitchOption

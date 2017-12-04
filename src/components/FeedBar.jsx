@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import FeedList from './FeedList';
-import '../styles/css/styles/FeedBar.css';
-import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
+import React, {Component} from 'react'
+import FeedList from './FeedList'
+import '../styles/css/styles/FeedBar.css'
+import '../assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
-import slothPhoto from '../assets/sloth.jpg';
+import slothPhoto from '../assets/sloth.jpg'
 
 
 const feedMsgs = [
@@ -90,8 +90,8 @@ class FeedBar extends Component {
           <i className="fa fa-plus"></i>
         </footer>
       </div>
-    );
+    )
   }
 }
 
-export default FeedBar;
+export default FeedBar

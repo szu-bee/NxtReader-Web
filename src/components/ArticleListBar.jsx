@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import SwitchOption from './SwitchOption';
-import ArticleList from './ArticleList';
-import '../styles/css/styles/ArticleListBar.css';
-import '../assets/font-awesome-4.7.0/css/font-awesome.min.css';
+import React, {Component} from 'react'
+import SwitchOption from './SwitchOption'
+import ArticleList from './ArticleList'
+import '../styles/css/styles/ArticleListBar.css'
+import '../assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
 
 const articleMsgs = [
@@ -75,11 +75,11 @@ const articleMsgs = [
     articleTitle: 'jhsbdibfafnskjdbfdskjbfjbsfdjeqw09n 0di9q0uda...',
     articleSummary: 'skldfhuafsjfnjkjsdf...'
   }
-];
+]
 
 function hideList(e) {
-  const listBar = document.querySelector('.article-list-bar');
-  listBar.style.display = 'none';
+  const listBar = document.querySelector('.article-list-bar')
+  listBar.style.display = 'none'
 }
 
 // function AllIcons(props) {
@@ -92,7 +92,7 @@ function hideList(e) {
 //         <i className="fa fa-chevron-left" onClick={hideList}></i>
 //       </div>
 //     </footer>
-//   );
+//   )
 // }
 
 // function SearchBar(props) {
@@ -101,26 +101,26 @@ function hideList(e) {
 //       <input type="text"/>
 //       <i className="fa fa-search"></i>
 //     </footer>
-//   );
+//   )
 // }
 
 class Footer extends Component {
   constructor(props) {
-    super(props);
-    this.handleFooterChange = this.handleFooterChange.bind(this);
-    this.state = {handleSearchOnly: false};
+    super(props)
+    this.handleFooterChange = this.handleFooterChange.bind(this)
+    this.state = {handleSearchOnly: false}
   }
 
   handleFooterChange() {
-    this.setState({handleSearchOnly: true});
+    this.setState({handleSearchOnly: true})
   }
   
   render() {
-    // const handleSearchOnly = this.state.handleSearchOnly;
+    // const handleSearchOnly = this.state.handleSearchOnly
 
-    // let footerBar = null;
+    // let footerBar = null
     // if (!handleSearchOnly) {
-    //   footerBar = <AllIcons onClick={this.handleFooterChange} />;
+    //   footerBar = <AllIcons onClick={this.handleFooterChange} />
     // } else {
     //   footerBar = <SearchBar />
     // }
@@ -134,7 +134,7 @@ class Footer extends Component {
           <i className="fa fa-chevron-left" onClick={hideList}></i>
         </div>
       </footer>
-    );
+    )
   }
 }
 
@@ -146,8 +146,8 @@ class ArticleListBar extends Component {
         <ArticleList articleMsgs={articleMsgs}/>
         <Footer/>
       </div>
-    );
+    )
   }
 }
 
-export default ArticleListBar;
+export default ArticleListBar
