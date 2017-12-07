@@ -1,0 +1,98 @@
+#Home {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+  }
+}
+
+#top-bar {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin: 2em auto;
+  height: 16vh;
+
+  .logo {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 20px;
+    position: relative;
+    top: 12px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+    position: relative;
+    top: 16px;
+    margin-left: 240px;
+
+    a {
+      margin-right: 40px;
+    }
+
+    .app-types {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .sign-in {
+      .login {
+
+      }
+    }
+  }
+}
+
+#middle-block {
+  font-size: 28px;
+  text-align: center;
+
+  .deep-bg {
+    background: rgb(87, 116, 155);
+    color: #f2f6fa;
+    height: calc(100vh - 16vh - 4em - 1.8em);
+  }
+
+  h3 {
+    font-weight: lighter;
+    padding-bottom: 1.8em;
+  }
+
+  div {
+    padding: 1.8em;
+  }
+
+  button {
+    height: 42px;
+    background: rgb(0, 153, 235);
+    border: 1px solid rgb(0, 153, 235);
+    color: white;
+    border-radius: 3px;
+    font-size: 18px;
+    padding-left: 50px;
+    padding-right: 50px;
+    outline: none;
+
+    &:hover {
+      background: rgb(14, 150, 204);
+      border: 1px solid rgb(14, 150, 204);
+      cursor: pointer;
+    }
+  }
+}
+
+#footer {
+  height: 24vh;
+  background: rgb(18, 38, 60);  
+  color: #f2f6fa;
+  padding-top: 4em;
+}
+
+.underlink_hover:hover {
+  text-decoration: underline;
+}
