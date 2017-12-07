@@ -1,9 +1,8 @@
 # NxtReader Web Distribution
 
-NxtReader致力于构造一个开源、高度可配置、灵活、多功能的Reader。
+NxtReader is aimed at constructing a reader which is open source, highly configurable, flexible, multifunctional.
 
-- 动机
-  - 解决Web信息分散、多样化等诸多的聚合难题。 
-  - UI可定制、扩展、复用。  
-  - 带可选的推荐系统。  
-  - 高度可配置。
+- Motivation
+  - Solve difficult gathering problems in web such as information dispersion, diversify, etc.
+  - Recommender System available.
+  - UI is customizable, extendible and reusable.
