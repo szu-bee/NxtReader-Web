@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import '../styles/css/Home.css'
 import { Modal, Button } from 'antd'
-
 import LoginForm from './Login'
 import RegistrationForm from './Registration'
+import { Link } from 'react-router-dom'
 
 class TopBar extends Component {
   state = {
@@ -16,12 +16,10 @@ class TopBar extends Component {
       visible: true
     })
   }
-
   handleOk = () => {
     this.setState({
       confirmLoading: true
     })
-
     setTimeout(() => {
       this.setState({
         visible: false,
@@ -29,7 +27,6 @@ class TopBar extends Component {
       })
     }, 1000)
   }
-
   handleCancel = () => {
     this.setState({
       visible: false
@@ -59,6 +56,11 @@ class TopBar extends Component {
               Desktop (Electron) App
             </a>
           </div>
+          <Link to="/main">
+            <Button>
+              Try a minute
+            </Button>
+          </Link>
           <div className="sign-in">
             <Button type="primary" onClick={ this.showModal }>
               Sign in  
@@ -88,12 +90,10 @@ class MiddleBlock extends Component {
       visible: true
     })
   }
-
   handleOk = () => {
     this.setState({
       confirmLoading: true
     })
-
     setTimeout(() => {
       this.setState({
         visible: false,
@@ -101,7 +101,6 @@ class MiddleBlock extends Component {
       })
     }, 1000)
   }
-
   handleCancel = () => {
     this.setState({
       visible: false

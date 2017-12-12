@@ -16,7 +16,7 @@
     font-weight: bold;
     line-height: 20px;
     position: relative;
-    top: 12px; }
+    top: 8px; }
   #top-bar .options {
     display: flex;
     justify-content: space-around;
@@ -25,7 +25,7 @@
     top: 16px;
     margin-left: 240px; }
     #top-bar .options a {
-      margin-right: 40px; }
+      margin-right: 28px; }
     #top-bar .options .app-types {
       display: flex;
       justify-content: space-around; }
@@ -36,10 +36,10 @@
   #middle-block .deep-bg {
     background: #57749b;
     color: #f2f6fa;
-    height: calc(100vh - 16vh - 4em - 1.8em); }
+    height: calc(100vh - 16vh - 4em - 2em); }
   #middle-block h3 {
     font-weight: lighter;
-    padding-bottom: 1.8em; }
+    padding-bottom: 1.6em; }
   #middle-block div {
     padding: 1.8em; }
   #middle-block button {
@@ -61,7 +61,8 @@
   height: 24vh;
   background: #12263c;
   color: #f2f6fa;
-  padding-top: 4em; }
+  padding-top: 4em;
+  text-align: center; }
 
 .underlink_hover:hover {
   text-decoration: underline; }

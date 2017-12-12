@@ -1,0 +1,43 @@
+#Main {
+  
+}
+
+#sider {
+  overflow: 'auto';
+  height: '100vh'; 
+  position: 'fixed'; 
+  left: 0;
+
+  .search {
+    width: inherit;
+    margin: 8px;
+  }
+}
+
+#right-container {
+  min-height: 100vh;
+
+  .now-list {
+  }
+
+  .toolbar-right {
+    float: right;
+
+    .mark {
+      margin-left: 8px;
+    }
+  }
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: color .3s;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
+

@@ -20,7 +20,7 @@
     font-weight: bold;
     line-height: 20px;
     position: relative;
-    top: 12px;
+    top: 8px;
   }
 
   .options {
@@ -32,7 +32,7 @@
     margin-left: 240px;
 
     a {
-      margin-right: 40px;
+      margin-right: 28px;
     }
 
     .app-types {
@@ -52,12 +52,12 @@
   .deep-bg {
     background: rgb(87, 116, 155);
     color: #f2f6fa;
-    height: calc(100vh - 16vh - 4em - 1.8em);
+    height: calc(100vh - 16vh - 4em - 2em);
   }
 
   h3 {
     font-weight: lighter;
-    padding-bottom: 1.8em;
+    padding-bottom: 1.6em;
   }
 
   div {
@@ -88,6 +88,7 @@
   background: rgb(18, 38, 60);  
   color: #f2f6fa;
   padding-top: 4em;
+  text-align: center;
 }
 
 .underlink_hover:hover {

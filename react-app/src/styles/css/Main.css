@@ -1,0 +1,24 @@
+#sider {
+  overflow: 'auto';
+  height: '100vh';
+  position: 'fixed';
+  left: 0; }
+  #sider .search {
+    width: inherit;
+    margin: 8px; }
+
+#right-container {
+  min-height: 100vh; }
+  #right-container .toolbar-right {
+    float: right; }
+    #right-container .toolbar-right .mark {
+      margin-left: 8px; }
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: color .3s; }
+  .trigger:hover {
+    color: #1890ff; }

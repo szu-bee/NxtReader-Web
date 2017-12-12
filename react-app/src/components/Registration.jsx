@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import '../styles/css/Registration.css'
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd'
+import { Form, Input, Tooltip, Icon, Select, Row, Col, Checkbox, Button } from 'antd'
 
 const FormItem = Form.Item
 const Option = Select.Option
-const AutoCompleteOption = AutoComplete.Option
 
-class RegistrationForm extends React.Component {
+class RegistrationForm extends Component {
   state = {
-    confirmDirty: false,
-    autoCompleteResult: [],
+    confirmDirty: false
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -41,7 +39,6 @@ class RegistrationForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
-    const { autoCompleteResult } = this.state
 
     const formItemLayout = {
       labelCol: {
