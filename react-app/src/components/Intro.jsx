@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import '../styles/css/Home.css'
+import '../styles/css/Intro.css'
 import { Modal, Button } from 'antd'
 import LoginForm from './Login'
 import RegistrationForm from './Registration'
 import { Link } from 'react-router-dom'
 
 class TopBar extends Component {
-  state = {
-    visible: false,
-    confirmLoading: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
   }
 
   showModal = () => {
@@ -16,17 +18,7 @@ class TopBar extends Component {
       visible: true
     })
   }
-  handleOk = () => {
-    this.setState({
-      confirmLoading: true
-    })
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false
-      })
-    }, 1000)
-  }
+  
   handleCancel = () => {
     this.setState({
       visible: false
@@ -34,7 +26,7 @@ class TopBar extends Component {
   }
 
   render() {
-    const { visible, confirmLoading } = this.state
+    const { visible } = this.state
     
     return (
       <div id="top-bar">
@@ -67,9 +59,8 @@ class TopBar extends Component {
             </Button>
             <Modal title="Sign in"
               visible={ visible }
-              onOk={ this.handleOk }
-              confirmLoading={ confirmLoading }
-              onCancel={ this.handleCancel }>
+              onCancel={ this.handleCancel }
+              footer={ null }>
               <LoginForm />
             </Modal>
           </div>
@@ -80,9 +71,11 @@ class TopBar extends Component {
 }
 
 class MiddleBlock extends Component {
-  state = {
-    visible: false,
-    confirmLoading: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
   }
 
   showModal = () => {
@@ -90,17 +83,7 @@ class MiddleBlock extends Component {
       visible: true
     })
   }
-  handleOk = () => {
-    this.setState({
-      confirmLoading: true
-    })
-    setTimeout(() => {
-      this.setState({
-        visible: false,
-        confirmLoading: false
-      })
-    }, 1000)
-  }
+  
   handleCancel = () => {
     this.setState({
       visible: false
@@ -108,7 +91,7 @@ class MiddleBlock extends Component {
   }
 
   render() {
-    const { visible, confirmLoading } = this.state
+    const { visible } = this.state
 
     return (
       <div id="middle-block">
@@ -124,9 +107,8 @@ class MiddleBlock extends Component {
           </button>
           <Modal title="Register"
             visible={ visible }
-            onOk={ this.handleOk }
-            confirmLoading={ confirmLoading }
-            onCancel={ this.handleCancel }>
+            onCancel={ this.handleCancel }
+            footer={ null }>
             <RegistrationForm />
           </Modal>
         </div>
@@ -149,10 +131,10 @@ function Footer() {
   )
 }
 
-class Home extends Component {
+class Intro extends Component {
   render() {
     return (
-      <div id="Home">
+      <div id="Intro">
         <main>
           <TopBar />
           <MiddleBlock />
@@ -163,4 +145,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Intro

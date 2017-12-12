@@ -9,6 +9,7 @@ class RegistrationForm extends Component {
   state = {
     confirmDirty: false
   }
+
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -17,10 +18,12 @@ class RegistrationForm extends Component {
       }
     })
   }
+
   handleConfirmBlur = (e) => {
     const value = e.target.value
     this.setState({ confirmDirty: this.state.confirmDirty || !!value })
   }
+
   checkPassword = (rule, value, callback) => {
     const form = this.props.form
     if (value && value !== form.getFieldValue('password')) {
@@ -29,6 +32,7 @@ class RegistrationForm extends Component {
       callback()
     }
   }
+  
   checkConfirm = (rule, value, callback) => {
     const form = this.props.form
     if (value && this.state.confirmDirty) {
@@ -145,9 +149,8 @@ class RegistrationForm extends Component {
         <FormItem
           {...formItemLayout}
           label="Captcha"
-          extra="We must make sure that your are a human."
         >
-          <Row gutter={8}>
+          <Row gutter={20}>
             <Col span={12}>
               {getFieldDecorator('captcha', {
                 rules: [{ required: true, message: 'Please input the captcha you got!' }],

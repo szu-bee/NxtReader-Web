@@ -1,27 +1,20 @@
 import React, { Component } from 'react'
 import '../styles/css/Main.css'
 import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
+import PropTypes from 'prop-types'
+
 const { Header, Sider, Content } = Layout
 const { SubMenu } = Menu
 const Search = Input.Search
 const confirm = Modal.confirm
 
-function showConfirm() {
-  confirm({
-    title: 'Do you Want to mark all as read?',
-    // content: 'Some descriptions',
-    onOk() {
-      console.log('OK')
-    },
-    onCancel() {
-      console.log('Cancel')
-    }
-  })
-}
 
 class Main extends Component {
-  state = {
-    collapsed: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      collapsed: false
+    }
   }
 
   toggleCollapsed = () => {
@@ -33,7 +26,19 @@ class Main extends Component {
 
   toggleSearch = () => {
     this.setState({
-      collapsed: this.state.collapsed && false
+      collapsed: false
+    })
+  }
+
+  showConfirm = () => {
+    confirm({
+      title: 'Do you Want to mark all as read?',
+      onOk() {
+        console.log('OK')
+      },
+      onCancel() {
+        console.log('Cancel')
+      }
     })
   }
   
@@ -88,7 +93,7 @@ class Main extends Component {
             <Icon type="reload" className="trigger" />
             <span className="now-list">All articles</span>
             <span className="toolbar-right">
-              <span className="trigger" onClick={showConfirm}>
+              <span className="trigger" onClick={this.showConfirm}>
                 <Icon type="down-circle-o" />
                 <span className="mark">Mark all as read</span>
               </span>
@@ -114,5 +119,8 @@ class Main extends Component {
   }
 }
 
+Main.propTypes = {
+  collapsed: PropTypes.bool
+}
 
 export default Main
