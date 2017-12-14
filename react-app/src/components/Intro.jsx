@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/css/Intro.css'
 import { Modal, Button } from 'antd'
 import LoginForm from './Login'
 import RegistrationForm from './Registration'

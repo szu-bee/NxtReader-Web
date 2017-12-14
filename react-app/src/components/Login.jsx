@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/css/Login.css'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 
 const FormItem = Form.Item

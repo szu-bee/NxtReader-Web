@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/css/Main.css'
 import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
 import PropTypes from 'prop-types'
 

@@ -1,12 +1,7 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
-  color: #2e415c;
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-}
+@import '~antd/dist/antd.css';
+
+@import './App.scss';
+@import './Intro.scss';
+@import './Login.scss';
+@import './Registration.scss';
+@import './Main.scss';
