@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
+import { Layout, Col, Row, Menu, Icon, Input, Tooltip, Modal } from 'antd'
 import PropTypes from 'prop-types'
+import Card from './Card'
 
 const { Header, Sider, Content } = Layout
 const { SubMenu } = Menu
@@ -84,8 +85,7 @@ class Main extends Component {
         </Sider>
         <Layout id="right-container">
           <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
+            <Icon className="trigger"
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggleCollapsed}
             />
@@ -109,8 +109,53 @@ class Main extends Component {
               </span>
             </span>
           </Header>
-          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-            Content
+          <Content className="content">
+            <Row gutter={8} className="row-bottom">
+              <Col span={6}>
+                <Card title="Title1"
+                  description="This is the description"
+                  src="http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg"
+                />
+              </Col>
+              <Col span={6}>
+                <Card title="Title2" 
+                  description="This is the description"
+                  src="http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
+                />
+              </Col>
+              <Col span={6}>
+                <Card title="Title3" 
+                  description="This is the description"
+                  src="http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg"
+                />
+              </Col>
+              <Col span={6}>
+                <Card title="Title4" 
+                  description="This is the description"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+              </Col>
+            </Row>
+            <Row gutter={8} className="row-bottom">
+              <Col span={6}>
+                <Card title="Title5" 
+                  description="This is the description"
+                  src="https://cdn.images.express.co.uk/img/dynamic/1/590x/secondary/cat-659058.jpg"
+                />
+              </Col>
+              <Col span={6}>
+                <Card title="Title6" 
+                  description="This is the description"
+                  src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                />
+              </Col>
+              <Col span={6}>
+                <Card title="Title7" 
+                  description="This is the description"
+                  src="https://tse3.mm.bing.net/th?id=OIP.4yuTPLq3226_BXlZv1PCpQHaKP&pid=Api"
+                />
+              </Col>
+            </Row>
           </Content>
         </Layout>
       </Layout>
