@@ -34,15 +34,15 @@ class TopBar extends Component {
         </div>
         <div className="options">
           <div className="app-types">
-            <a href="#"
+            <a href="http://localhost:3000/"
               className="underlink_hover">
               iOS App
             </a>
-            <a href="#"
+            <a href="http://localhost:3000/"
               className="underlink_hover">
               Android App
             </a>
-            <a href="#"
+            <a href="http://localhost:3000/"
               className="underlink_hover">
               Desktop (Electron) App
             </a>

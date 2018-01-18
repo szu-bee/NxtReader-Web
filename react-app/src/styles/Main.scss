@@ -3,11 +3,6 @@
 }
 
 #sider {
-  overflow: 'auto';
-  height: '100vh'; 
-  position: 'fixed'; 
-  left: 0;
-
   .search {
     width: inherit;
     margin: 8px;
@@ -15,7 +10,8 @@
 }
 
 #right-container {
-  min-height: 100vh;
+  max-height: 100vh;
+  background: hsl(216, 26%, 85%);
 
   .now-list {
   }

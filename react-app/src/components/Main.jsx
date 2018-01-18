@@ -50,8 +50,7 @@ class Main extends Component {
           collapsible
           collapsed={this.state.collapsed}
         >
-          <Search
-            className="search"
+          <Search className="search"
             placeholder="Search | subscribe"
             onClick={this.toggleSearch}
             onSearch={value => console.log(value)}
@@ -66,20 +65,24 @@ class Main extends Component {
               <span>Stars</span>
             </Menu.Item>
             <Menu.Item key="3">
-              <Tooltip placement="topLeft" title="Only recommend what you concern">
+              <Tooltip placement="topLeft" 
+                title="Only recommend what you concern">
                 <Icon type="smile" />
                 <span>Recommendation</span>
               </Tooltip>
             </Menu.Item>
             <SubMenu key="sub1" 
-              title={<div>
+              title={
+                    <div>
                       <Icon type="folder-add" />
                       <span>Subscriptions</span>
-                    </div>}>
-              <Menu.Item key="1">feed1</Menu.Item>
-              <Menu.Item key="2">feed2</Menu.Item>
-              <Menu.Item key="3">feed3</Menu.Item>
-              <Menu.Item key="4">feed4</Menu.Item>
+                    </div>
+              }
+            >
+              <Menu.Item key="s1">feed1</Menu.Item>
+              <Menu.Item key="s2">feed2</Menu.Item>
+              <Menu.Item key="s3">feed3</Menu.Item>
+              <Menu.Item key="s4">feed4</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -115,18 +118,21 @@ class Main extends Component {
                 <Card title="Title1"
                   description="This is the description"
                   src="http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg"
+                  href="http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg"
                 />
               </Col>
               <Col span={6}>
                 <Card title="Title2" 
                   description="This is the description"
                   src="http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
+                  href="http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
                 />
               </Col>
               <Col span={6}>
                 <Card title="Title3" 
                   description="This is the description"
                   src="http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg"
+                  href="http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg"
                 />
               </Col>
               <Col span={6}>

@@ -52,7 +52,11 @@
   .deep-bg {
     background: rgb(87, 116, 155);
     color: #f2f6fa;
-    height: calc(100vh - 16vh - 4em - 2em);
+    height: calc(100vh - 16vh - 6em);
+
+    div {
+      padding-top: 4em;
+    }
   }
 
   h3 {
