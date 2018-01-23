@@ -25,14 +25,9 @@
   }
 
   .content {
+    display: flex;
+    flex-wrap: wrap;
     padding: 30px;
-    margin: 16px 8px;
-    height: 280;
-    display: inline-block;
-  }
-
-  .row-bottom {
-    margin-bottom: 32px;
   }
 }
 
