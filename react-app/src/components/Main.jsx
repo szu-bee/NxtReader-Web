@@ -8,6 +8,99 @@ const { SubMenu } = Menu
 const Search = Input.Search
 const confirm = Modal.confirm
 
+const cards = [
+  {
+    id: 1,
+    title: 'Title1',
+    description: 'This is the description',
+    src: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg',
+    href: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg'
+  },
+  {
+    id: 2,
+    title: 'Title2',
+    description: 'This is the description',
+    src: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg',
+    href: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg'
+  },
+  {
+    id: 3,
+    title: 'Title3',
+    description: 'This is the description',
+    src: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg',
+    href: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg'
+  },
+  {
+    id: 4,
+    title: 'Title4',
+    description: 'This is the description',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+  },
+  {
+    id: 5,
+    title: 'Title5',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+  },
+  {
+    id: 6,
+    title: 'Title6',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+  },
+  {
+    id: 7,
+    title: 'Title1',
+    description: 'This is the description',
+    src: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg',
+    href: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg'
+  },
+  {
+    id: 8,
+    title: 'Title2',
+    description: 'This is the description',
+    src: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg',
+    href: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg'
+  },
+  {
+    id: 9,
+    title: 'Title3',
+    description: 'This is the description',
+    src: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg',
+    href: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg'
+  },
+  {
+    id: 10,
+    title: 'Title4',
+    description: 'This is the description',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+  },
+  {
+    id: 11,
+    title: 'Title5',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+  },
+  {
+    id: 12,
+    title: 'Title6',
+    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
+  }
+]
+
+function Content(props) {
+  const cd = props.cards.map(card =>
+    <Card key={card.id} 
+      title={card.title}
+      description={card.description}
+      src={card.src}
+      href={card.href}
+    />
+  )
+
+  return (
+    <div className="content">
+      {cd}
+    </div>
+  )
+}
 
 class Main extends Component {
   constructor(props) {
@@ -41,15 +134,14 @@ class Main extends Component {
       }
     })
   }
-  
+
   render() {
     return (
       <Layout id="Main">
         <Sider id="sider"
           trigger={null}
           collapsible
-          collapsed={this.state.collapsed}
-        >
+          collapsed={this.state.collapsed}>
           <Search className="search"
             placeholder="Search | subscribe"
             onClick={this.toggleSearch}
@@ -112,39 +204,7 @@ class Main extends Component {
               </span>
             </span>
           </Header>
-          <div className="content">
-            <Card title="Title1"
-              description="This is the description"
-              src="http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg"
-              href="http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg"
-            />
-            <Card title="Title2"
-              description="This is the description http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
-              src="http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
-              href="http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg"
-            />
-            <Card title="Title3" 
-              description="This is the description"
-              src="http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg"
-              href="http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg"
-            />
-            <Card title="Title4" 
-              description="This is the description"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-            <Card title="Title5" 
-              description="This is the description"
-              src="https://cdn.images.express.co.uk/img/dynamic/1/590x/secondary/cat-659058.jpg"
-            />
-            <Card title="Title6" 
-              description="This is the description"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-            <Card title="Title7" 
-              description="This is the description"
-              src="https://tse3.mm.bing.net/th?id=OIP.4yuTPLq3226_BXlZv1PCpQHaKP&pid=Api"
-            />
-          </div>
+          <Content cards={cards} />
         </Layout>
       </Layout>
     )

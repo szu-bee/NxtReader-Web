@@ -13,7 +13,7 @@
   justify-content: space-around;
   position: relative;
   margin: 2em auto;
-  height: 16vh;
+  min-height: 16vh;
 
   .logo {
     font-size: 32px;
@@ -29,7 +29,6 @@
     font-size: 15px;
     position: relative;
     top: 16px;
-    margin-left: 240px;
 
     a {
       margin-right: 28px;
@@ -61,11 +60,11 @@
 
   h3 {
     font-weight: lighter;
-    padding-bottom: 1.6em;
+    padding: 0 0 40px;
   }
 
   div {
-    padding: 1.8em;
+    padding: 0 0 60px;
   }
 
   button {
@@ -75,8 +74,7 @@
     color: white;
     border-radius: 3px;
     font-size: 18px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 1px 50px;
     outline: none;
 
     &:hover {
@@ -88,11 +86,11 @@
 }
 
 #footer {
-  height: 24vh;
+  height: 200px;
   background: rgb(18, 38, 60);  
   color: #f2f6fa;
   text-align: center;
-  padding: 11vh;
+  padding: 75px;
 }
 
 .underlink_hover:hover {
