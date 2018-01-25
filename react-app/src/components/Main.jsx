@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
 import PropTypes from 'prop-types'
-import Card from './Card'
+import Card from './common/Card'
 
 const { Header, Sider } = Layout
 const { SubMenu } = Menu

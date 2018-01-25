@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Intro from '../components/Intro'
+// import PropTypes from 'prop-types'
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route
+} from 'react-router-dom'
+
+import Intro from './Intro'
 import Main from '../components/Main'
 
 class App extends Component {
