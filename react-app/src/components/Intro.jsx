@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import TopBarContainer from '../containers/TopBarContainer'
 import { 
   showLoginModal, 
   closeLoginModal,
   // loginModalVisible
+  showRegisModal,
+  closeRegisModal
 } from '../actions'
-
-import TopBar from '../components/topBar'
-// import MiddleBlock from '../components/middleBlock'
+import MiddleBlock from '../components/middleBlock'
 
 const Footer = () => (
   <div id="footer">
@@ -25,29 +26,19 @@ let Intro = ({ dispatch }) => {
   return (
     <div id="Intro">
       <main>
-        <TopBar
+        <TopBarContainer/>
+        <MiddleBlock 
           showModal={e => {
-            dispatch(showLoginModal())
+            dispatch(showRegisModal())
           }}
           handleCancel={e => {
-            dispatch(closeLoginModal())
+            dispatch(closeRegisModal())
           }}
-          visible={false}
-          // visible={dispatch(loginModalVisible)}
         />
-        {/* <MiddleBlock 
-          showModal={e => {
-            dispatch(showRegisModal(true))
-          }}
-          handleCancel={e => {
-            dispatch(closeRegisModal(false))
-          }}
-        /> */}
       </main>
       <Footer />
     </div>
   )
 }
-Intro = connect()(Intro)
 
 export default Intro

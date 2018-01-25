@@ -6,7 +6,7 @@ import {
   Route
 } from 'react-router-dom'
 
-import Intro from './Intro'
+import Intro from '../components/Intro'
 import Main from '../components/Main'
 
 class App extends Component {

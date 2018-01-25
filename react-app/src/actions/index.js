@@ -1,33 +1,22 @@
-
-const showLoginModal = payload => ({
-  type: 'SHOW_LOGIN_MODAL',
-  payload
+const showLoginModal = () => ({
+    type: 'SHOW_LOGIN_MODAL'
 })
 
-const closeLoginModal = payload => ({
-  type: 'CLOSE_LOGIN_MODAL',
-  payload
+const closeLoginModal = () => ({
+    type: 'CLOSE_LOGIN_MODAL',
 })
 
-const loginModalVisible = 'LOGIN_MODAL_VISIBLE'
-
-const showRegisModal = (payload) => ({
-  type: 'SHOW_REGIS_MODAL',
-  payload
+const showRegisModal = () => ({
+    type: 'SHOW_REGIS_MODAL',
 })
 
-const closeRegisModal = (payload) => ({
-  type: 'CLOSE_REGIS_MODAL',
-  payload
+const closeRegisModal = () => ({
+    type: 'CLOSE_REGIS_MODAL',
 })
 
-const regisModalVisible = 'REGIS_MODAL_VISIBLE'
-
-export { 
-  showLoginModal, 
-  closeLoginModal, 
-  loginModalVisible,
-  showRegisModal,
-  closeRegisModal,
-  regisModalVisible
+export {
+    showLoginModal,
+    closeLoginModal,
+    showRegisModal,
+    closeRegisModal
 }
