@@ -50,6 +50,4 @@ class NormalLoginForm extends Component {
   }
 }
 
-const WrappedNormalLoginForm = Form.create()(NormalLoginForm)
-
-export default WrappedNormalLoginForm
+export default Form.create()(NormalLoginForm)

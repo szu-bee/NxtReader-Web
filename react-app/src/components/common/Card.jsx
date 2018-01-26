@@ -3,7 +3,6 @@ import { Card, Icon, Tooltip, Popover, Button } from 'antd'
 
 const { Meta } = Card
 
-
 class CardBlock extends Component {
   constructor(props) {
     super(props)

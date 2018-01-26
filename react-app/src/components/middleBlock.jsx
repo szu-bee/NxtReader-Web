@@ -13,7 +13,7 @@ const MiddleBlock = ({ showModal, handleCancel, visible }) => (
         Create a free account
       </button>
       <Modal title="Register"
-        // visible={ visible }
+        visible={ visible }
         onCancel={ handleCancel }
         footer={ null }>
         <RegistrationForm />
@@ -25,7 +25,7 @@ const MiddleBlock = ({ showModal, handleCancel, visible }) => (
 MiddleBlock.propTypes = {
   showModal: PropTypes.func.isRequired,
   handleCancel: PropTypes.func.isRequired,
-  // visible: PropTypes.bool.isRequired
+  visible: PropTypes.bool.isRequired
 }
 
 export default MiddleBlock

@@ -177,6 +177,4 @@ class RegistrationForm extends Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create()(RegistrationForm)
-
-export default WrappedRegistrationForm
+export default Form.create()(RegistrationForm)
