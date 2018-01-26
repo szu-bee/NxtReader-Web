@@ -7,14 +7,15 @@ import {
 
 import Intro from './components/Intro'
 import Main from './components/Main'
+// import MainContainer from './containers/MainContainer'
 
 class App extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route exact path='/' component={Intro}></Route>
-          <Route path='/main' component={Main}></Route>
+          <Route exact path='/' component={ Intro }></Route>
+          <Route path='/main' component={ Main }></Route>
         </Switch>
       </Router>
     )

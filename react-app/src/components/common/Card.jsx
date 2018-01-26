@@ -23,11 +23,15 @@ class CardBlock extends Component {
       isRead: !this.state.isRead
     })
   }
-  
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isRead) {
+      this.forceUpdate()
+    }
+  }
   render() {
     const isStarred = this.state.isStarred
     const isRead = this.state.isRead
-
+    
     let icon = !isStarred ? 
       <Tooltip placement="bottomLeft" 
         title="Star article">
@@ -59,8 +63,9 @@ class CardBlock extends Component {
             <Icon type="ellipsis" />
           </Popover>
         ]}
-        style={ !this.state.isRead ? { background: '#fff' } 
-                                   : { background: '#f1f5fa' } }
+        style={ this.state.isRead || this.props.isRead ? 
+                  { background: '#f1f5fa' } : { background: '#fff' }
+              }
       >
         <Meta title={this.props.title}
           description={this.props.description}

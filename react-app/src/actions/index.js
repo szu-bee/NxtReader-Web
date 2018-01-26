@@ -14,9 +14,19 @@ const closeRegisModal = () => ({
   type: 'CLOSE_REGIS_MODAL'
 })
 
+const ok = () => ({
+  type: 'OK'
+})
+
+const cancel = () => ({
+  type: 'CANCEL'
+})
+
 export { 
   showLoginModal,
   closeLoginModal,
   showRegisModal,    
-  closeRegisModal
+  closeRegisModal,
+  ok,
+  cancel
 }

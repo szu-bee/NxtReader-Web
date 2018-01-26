@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Card from './common/Card'
 
 const { Header, Sider } = Layout
@@ -85,35 +85,70 @@ const cards = [
   }
 ]
 
-function Content(props) {
-  const cd = props.cards.map(card =>
-    <Card key={card.id} 
-      title={card.title}
-      description={card.description}
-      src={card.src}
-      href={card.href}
-    />
-  )
+const feeds = [
+  {
+    id: 's1',
+    name: 'feed1'
+  },
+  {
+    id: 's2',
+    name: 'feed2'
+  },
+  {
+    id: 's3',
+    name: 'feed3'
+  },
+  {
+    id: 's4',
+    name: 'feed4'
+  }
+]
 
-  return (
-    <div className="content">
-      {cd}
-    </div>
-  )
+class Content extends Component {
+  constructor(props) {
+    super(props)
+    
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isRead) {
+      this.forceUpdate()
+    }
+  }
+
+  render() {
+    const { isRead } = this.props
+    return (
+      <div className="content">
+        { 
+          this.props.cards.map(card =>
+            <Card key={ card.id } 
+              title={ card.title }
+              description={ card.description }
+              src={ card.src }
+              href={ card.href }
+              isRead={ isRead }
+            />
+          )
+        }
+      </div>
+    )
+  }
 }
 
 class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      collapsed: false
+      collapsed: false,
+      visible: false,
+      isRead: false
     }
   }
 
   toggleCollapsed = () => {
     this.setState({
-      collapsed: !this.state.collapsed,
-      showFeeds: false
+      collapsed: !this.state.collapsed
     })
   }
 
@@ -123,29 +158,48 @@ class Main extends Component {
     })
   }
 
-  showConfirm = () => {
+  showModal = () => {
+    this.setState({
+      visible: !this.state.visible
+    })
+  }
+
+  ok = () => {
+    this.setState({
+      isRead: true
+    })
+    console.log('ok')
+  }
+
+  cancel = () => {
+    this.setState({
+      isRead: false
+    })
+    console.log('cancel')
+  }
+
+  showConfirm = function (){
+    let that = this
     confirm({
       title: 'Do you Want to mark all as read?',
-      onOk() {
-        console.log('OK')
-      },
-      onCancel() {
-        console.log('Cancel')
-      }
+      onOk: that.ok,
+      onCancel: that.cancel
     })
   }
 
   render() {
+    // const { handleOk, handleCancel } = this.props
+
     return (
       <Layout id="Main">
         <Sider id="sider"
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}>
+            trigger={ null }
+            collapsible
+            collapsed={ this.state.collapsed }>
           <Search className="search"
             placeholder="Search | subscribe"
-            onClick={this.toggleSearch}
-            onSearch={value => console.log(value)}
+            onClick={ this.toggleSearch }
+            onSearch={ value => console.log(value) }
           />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
@@ -163,56 +217,54 @@ class Main extends Component {
                 <span>Recommendation</span>
               </Tooltip>
             </Menu.Item>
-            <SubMenu key="sub1" 
-              title={
-                    <div>
-                      <Icon type="folder-add" />
-                      <span>Subscriptions</span>
-                    </div>
+            <SubMenu key="sub1"
+                title={
+                  <div>
+                    <Icon type="folder-add" />
+                    <span>Subscriptions</span>
+                  </div>
+                }>
+              { 
+                feeds.map(feed => 
+                  <Menu.Item key={ feed.id }>
+                    { feed.name }
+                  </Menu.Item>
+                )
               }
-            >
-              <Menu.Item key="s1">feed1</Menu.Item>
-              <Menu.Item key="s2">feed2</Menu.Item>
-              <Menu.Item key="s3">feed3</Menu.Item>
-              <Menu.Item key="s4">feed4</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
         <Layout id="right-container">
           <Header style={{ background: '#fff', padding: 0 }}>
             <Icon className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggleCollapsed}
+              type={ this.state.collapsed ? 'menu-unfold' : 'menu-fold' }
+              onClick={ this.toggleCollapsed }
             />
             <Icon type="reload" className="trigger" />
             <span className="now-list">All articles</span>
             <span className="toolbar-right">
-              <span className="trigger" onClick={this.showConfirm}>
+              <span className="trigger" onClick={ this.showConfirm.bind(this) }>
                 <Icon type="down-circle-o" />
                 <span className="mark">Mark all as read</span>
               </span>
               <span className="trigger">100 Unread</span>
               <span>
-                <Tooltip placement="bottomRight" title={<span>Notifications</span>}>
+                <Tooltip placement="bottomRight" title="Notifications">
                   <Icon type="notification" className="trigger" />
                 </Tooltip>
               </span>
               <span>
-                <Tooltip placement="bottomRight" title={<span>Preferences Menu</span>}>
+                <Tooltip placement="bottomRight" title="Preferences Menu">
                   <Icon type="setting" className="trigger" />
                 </Tooltip>
               </span>
             </span>
           </Header>
-          <Content cards={cards} />
+          <Content cards={ cards } isRead={ this.state.isRead } />
         </Layout>
       </Layout>
     )
   }
-}
-
-Main.propTypes = {
-  collapsed: PropTypes.bool
 }
 
 export default Main
