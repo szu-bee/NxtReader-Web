@@ -23,52 +23,56 @@ class CardBlock extends Component {
       isRead: !this.state.isRead
     })
   }
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isRead) {
+    if (nextProps.isAllRead) {
+      this.setState({
+        isRead: true
+      })
       this.forceUpdate()
     }
   }
+
   render() {
     const isStarred = this.state.isStarred
-    const isRead = this.state.isRead
+    let isRead = this.state.isRead
     
     let icon = !isStarred ? 
       <Tooltip placement="bottomLeft" 
         title="Star article">
-        <Icon type="star-o" onClick={this.toggleStar} size="200" />
+        <Icon type="star-o" onClick={ this.toggleStar} size="200" />
       </Tooltip> :
       <Tooltip placement="bottomLeft" 
         title="UnStar article">
-        <Icon type="star" onClick={this.toggleStar} />
+        <Icon type="star" onClick={ this.toggleStar } />
       </Tooltip>
       
     return (
       <Card id="card"
-        cover={<img alt="fst-pic" src={this.props.src} />}
+        cover={<img alt="fst-pic" src={ this.props.src } />}
         actions={[
           <div>{ icon }</div>, 
           <Tooltip placement="bottomLeft"
             title="Open in new tab">
-            <a target="_blank" href={this.props.href}>
+            <a target="_blank" href={ this.props.href }>
               <Icon type="plus-square-o" />
             </a>
           </Tooltip>,
           <Popover trigger="click"
             content={
-              <Button size="large" type="dash" onClick={this.toggleRead}>
-                Mark as { !isRead ? 'read' : 'unread' }
+              <Button size="large" type="dash" onClick={ this.toggleRead }>
+                Mark as { isRead ? 'unread' : 'read' }
               </Button>
-            }
-          >
+            }>
             <Icon type="ellipsis" />
           </Popover>
         ]}
-        style={ this.state.isRead || this.props.isRead ? 
-                  { background: '#f1f5fa' } : { background: '#fff' }
-              }
+        style={
+          isRead ? { background: '#f1f5fa' } : { background: '#fff' }
+        }
       >
-        <Meta title={this.props.title}
-          description={this.props.description}
+        <Meta title={ this.props.title }
+          description={ this.props.description }
         />
       </Card>
     )

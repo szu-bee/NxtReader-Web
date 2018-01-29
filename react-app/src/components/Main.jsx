@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
-// import PropTypes from 'prop-types'
 import Card from './common/Card'
 
 const { Header, Sider } = Layout
@@ -105,19 +104,15 @@ const feeds = [
 ]
 
 class Content extends Component {
-  constructor(props) {
-    super(props)
-    
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isRead) {
+    if (nextProps.isAllRead) {
       this.forceUpdate()
     }
   }
 
   render() {
-    const { isRead } = this.props
+    const { isAllRead } = this.props
+
     return (
       <div className="content">
         { 
@@ -127,7 +122,7 @@ class Content extends Component {
               description={ card.description }
               src={ card.src }
               href={ card.href }
-              isRead={ isRead }
+              isAllRead={ isAllRead }
             />
           )
         }
@@ -142,7 +137,7 @@ class Main extends Component {
     this.state = {
       collapsed: false,
       visible: false,
-      isRead: false
+      isAllRead: false
     }
   }
 
@@ -166,20 +161,19 @@ class Main extends Component {
 
   ok = () => {
     this.setState({
-      isRead: true
+      isAllRead: true
     })
-    console.log('ok')
   }
 
   cancel = () => {
     this.setState({
-      isRead: false
+      isAllRead: false
     })
-    console.log('cancel')
   }
 
-  showConfirm = function (){
+  showConfirm() {
     let that = this
+
     confirm({
       title: 'Do you Want to mark all as read?',
       onOk: that.ok,
@@ -188,8 +182,6 @@ class Main extends Component {
   }
 
   render() {
-    // const { handleOk, handleCancel } = this.props
-
     return (
       <Layout id="Main">
         <Sider id="sider"
@@ -260,7 +252,7 @@ class Main extends Component {
               </span>
             </span>
           </Header>
-          <Content cards={ cards } isRead={ this.state.isRead } />
+          <Content cards={ cards } isAllRead={ this.state.isAllRead } />
         </Layout>
       </Layout>
     )
