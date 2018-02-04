@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Modal } from 'antd'
-import RegistrationForm from './common/Registration'
+import RegistrationForm from '../containers/RegiContainer.js'
 
 const MiddleBlock = ({ showModal, handleCancel, visible }) => (
   <div id="middle-block">

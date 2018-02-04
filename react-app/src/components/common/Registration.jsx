@@ -1,43 +1,66 @@
 import React, { Component } from 'react'
-import { Form, Input, Tooltip, Icon, Select, Row, Col, Checkbox, Button } from 'antd'
+import axios from 'axios'
+import { 
+  Form, Input, Button, message
+} from 'antd'
+
+const baseUrl = 'http://localhost:9000'
 
 const FormItem = Form.Item
-const Option = Select.Option
 
 class RegistrationForm extends Component {
   state = {
     confirmDirty: false
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values)
-      }
-    })
-  }
+  checkConfirm = (rule, value, callback) => {
+    const form = this.props.form
 
-  handleConfirmBlur = (e) => {
-    const value = e.target.value
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value })
+    if (value && value.length < 8) {
+      callback('Password must be at least 8 characters.')
+    } else if (value && this.state.confirmDirty) {
+      form.validateFields(['confirm'], { force: true })
+    } else {
+      callback()
+    }
   }
 
   checkPassword = (rule, value, callback) => {
     const form = this.props.form
+    
     if (value && value !== form.getFieldValue('password')) {
       callback('Two passwords that you enter is inconsistent!')
     } else {
       callback()
     }
   }
-  
-  checkConfirm = (rule, value, callback) => {
-    const form = this.props.form
-    if (value && this.state.confirmDirty) {
-      form.validateFields(['confirm'], { force: true })
-    }
-    callback()
+
+  handleConfirmBlur = (e) => {
+    const value = e.target.value
+    this.setState({ 
+      confirmDirty: this.state.confirmDirty || !!value 
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        return axios.post(baseUrl + '/regi', values)
+          .then(res => {
+            this.props.handleCancel()
+            console.log(res)
+            message.success('Registration succeed!')
+          })
+          .catch(err => {
+            if (err.response.status === 400) {
+              message.error('User has been registration!')
+            } else {
+              message.error('Server failed.')
+            }
+          })
+      }
+    })
   }
 
   render() {
@@ -53,6 +76,7 @@ class RegistrationForm extends Component {
         sm: { span: 16 },
       },
     }
+
     const tailFormItemLayout = {
       wrapperCol: {
         xs: {
@@ -65,14 +89,6 @@ class RegistrationForm extends Component {
         },
       },
     }
-    const prefixSelector = getFieldDecorator('prefix', {
-      initialValue: '86',
-    })(
-      <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    )
 
     return (
       <Form onSubmit={this.handleSubmit} className="registration-form">
@@ -92,8 +108,19 @@ class RegistrationForm extends Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Password"
+          label={(
+            <span>Username</span>
+          )}
         >
+          {getFieldDecorator('username', {
+            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+          })(
+            <Input />
+          )}
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Password">
           {getFieldDecorator('password', {
             rules: [{
               required: true, message: 'Please input your password!',
@@ -118,59 +145,12 @@ class RegistrationForm extends Component {
             <Input type="password" onBlur={this.handleConfirmBlur} />
           )}
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label={(
-            <span>
-              Nickname
-              <Tooltip title="What do you want others to call you?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          )}
-        >
-          {getFieldDecorator('nickname', {
-            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-          })(
-            <Input />
-          )}
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Phone Number"
-        >
-          {getFieldDecorator('phone', {
-            rules: [{ required: true, message: 'Please input your phone number!' }],
-          })(
-            <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
-          )}
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Captcha"
-        >
-          <Row gutter={20}>
-            <Col span={12}>
-              {getFieldDecorator('captcha', {
-                rules: [{ required: true, message: 'Please input the captcha you got!' }],
-              })(
-                <Input />
-              )}
-            </Col>
-            <Col span={12}>
-              <Button>Get captcha</Button>
-            </Col>
-          </Row>
-        </FormItem>
         <FormItem {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>I have read the <a href="">agreement</a></Checkbox>
-          )}
-        </FormItem>
-        <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit" className="registration-form-button">Register</Button>
+          <Button type="primary"
+              htmlType="submit" 
+              className="registration-form-button">
+            Register
+          </Button>
         </FormItem>
       </Form>
     )

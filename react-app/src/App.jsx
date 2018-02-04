@@ -7,7 +7,6 @@ import {
 
 import Intro from './components/Intro'
 import Main from './components/Main'
-// import MainContainer from './containers/MainContainer'
 
 class App extends Component {
   render() {
