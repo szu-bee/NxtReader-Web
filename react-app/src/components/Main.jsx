@@ -84,6 +84,24 @@ const cards = [
   }
 ]
 
+const folders = [
+  {
+    id: 1,
+    iconType: 'file-text',
+    name: 'All articles'
+  },
+  {
+    id: 2,
+    iconType: 'star',
+    name: 'Stars'
+  },
+  {
+    id: 3,
+    iconType: 'smile',
+    name: 'Recommendation'
+  }
+]
+
 const feeds = [
   {
     id: 's1',
@@ -137,7 +155,8 @@ class Main extends Component {
     this.state = {
       collapsed: false,
       visible: false,
-      isAllRead: false
+      isAllRead: false,
+      correntId: 0
     }
   }
 
@@ -181,6 +200,12 @@ class Main extends Component {
     })
   }
 
+  toggleSelectDir = (index) => {
+    this.setState({
+      correntId: index
+    })
+  }
+
   render() {
     return (
       <Layout id="Main">
@@ -189,26 +214,21 @@ class Main extends Component {
             collapsible
             collapsed={ this.state.collapsed }>
           <Search className="search"
-            placeholder="Search | subscribe"
+            placeholder="Subscribe"
             onClick={ this.toggleSearch }
             onSearch={ value => console.log(value) }
           />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="file-text" />
-              <span>All articles</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="star" />
-              <span>Stars</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Tooltip placement="topLeft" 
-                title="Only recommend what you concern">
-                <Icon type="smile" />
-                <span>Recommendation</span>
-              </Tooltip>
-            </Menu.Item>
+          <Menu theme="dark" mode="inline" 
+              defaultSelectedKeys={['1']}>
+            {
+              folders.map((folder, index) =>
+                <Menu.Item key={ folder.id }
+                    onClick={ this.toggleSelectDir.bind(this, index) }>
+                  <Icon type={ folder.iconType } />
+                  <span>{ folder.name }</span>
+                </Menu.Item>
+              )
+            }
             <SubMenu key="sub1"
                 title={
                   <div>
@@ -233,7 +253,7 @@ class Main extends Component {
               onClick={ this.toggleCollapsed }
             />
             <Icon type="reload" className="trigger" />
-            <span className="now-list">All articles</span>
+            <span className="now-list">{ folders[this.state.correntId].name }</span>
             <span className="toolbar-right">
               <span className="trigger" onClick={ this.showConfirm.bind(this) }>
                 <Icon type="down-circle-o" />
