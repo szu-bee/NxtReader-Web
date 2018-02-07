@@ -3,8 +3,7 @@ import axios from 'axios'
 import { 
   Form, Input, Button, message
 } from 'antd'
-
-const baseUrl = 'http://localhost:9000'
+import baseUrl from '../../common/util'
 
 const FormItem = Form.Item
 
@@ -49,13 +48,13 @@ class RegistrationForm extends Component {
         return axios.post(baseUrl + '/regi', values)
           .then(res => {
             this.props.handleCancel()
-            console.log(res)
             message.success('Registration succeed!')
           })
           .catch(err => {
             if (err.response.status === 400) {
               message.error('User has been registration!')
-            } else {
+            }
+            if (err.response.status === 500) {
               message.error('Server failed.')
             }
           })
