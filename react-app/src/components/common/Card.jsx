@@ -53,22 +53,53 @@ class CardBlock extends Component {
     let isRead = this.state.isRead
     
     let icon = !isStarred ?
-      <Tooltip placement="bottomLeft" 
-        title="Star article">
+      <Tooltip placement="bottomLeft"
+          title="Star article">
         <Icon type="star-o" onClick={ this.toggleStar } size="200" />
       </Tooltip> :
-      <Tooltip placement="bottomLeft" 
-        title="UnStar article">
+      <Tooltip placement="bottomLeft"
+          title="UnStar article">
         <Icon type="star" onClick={ this.toggleStar } />
       </Tooltip>
-      
+
+    if (this.props.picUrl !== null) {
+      return (
+        <Card id="card"
+          cover={<img alt="fst-pic" src={ this.props.picUrl } />}
+          actions={[
+            <div>{ icon }</div>,
+            <Tooltip placement="bottomLeft"
+                title="Open in new tab">
+              <a target="_blank" href={ this.props.homeUrl }>
+                <Icon type="plus-square-o" />
+              </a>
+            </Tooltip>,
+            <Popover trigger="click"
+              content={
+                <Button size="large" type="dash" onClick={ this.toggleRead }>
+                  Mark as { isRead ? 'unread' : 'read' }
+                </Button>
+              }>
+              <Icon type="ellipsis" />
+            </Popover>
+          ]}
+          style={
+            isRead ? { background: '#f1f5fa' } : { background: '#fff' }
+          }
+        >
+          <Meta title={ this.props.title + '...' }
+            description={ this.props.content.substr(0, 80) + '...' }
+          />
+        </Card>
+      )
+    }
+
     return (
       <Card id="card"
-        cover={<img alt="fst-pic" src={ this.props.picUrl } />}
         actions={[
           <div>{ icon }</div>, 
           <Tooltip placement="bottomLeft"
-            title="Open in new tab">
+              title="Open in new tab">
             <a target="_blank" href={ this.props.homeUrl }>
               <Icon type="plus-square-o" />
             </a>
@@ -86,8 +117,8 @@ class CardBlock extends Component {
           isRead ? { background: '#f1f5fa' } : { background: '#fff' }
         }
       >
-        <Meta title={ this.props.title }
-          description={ this.props.content }
+        <Meta title={ this.props.title + '...' }
+          description={ this.props.content.substr(0, 180) + '...' }
         />
       </Card>
     )

@@ -3,6 +3,7 @@
 
 #sider {
   min-height: 100vh;
+  
 
   .search {
     width: inherit;
@@ -11,24 +12,30 @@
 }
 
 #right-container {
-  max-height: 100vh;
+  // height: 100vh;
   background: hsl(216, 26%, 85%);
 
-  .now-list {
-  }
+  .top-bar {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    padding: 0;
+    z-index: 1;
 
-  .toolbar-right {
-    float: right;
-
-    .mark {
-      margin-left: 8px;
+    .toolbar-right {
+      position: absolute;
+      right: 200px;
+  
+      .mark {
+        margin-left: 8px;
+      }
     }
   }
 
   .content {
     display: flex;
     flex-wrap: wrap;
-    padding: 30px;
+    padding: 90px 30px;
   }
 }
 

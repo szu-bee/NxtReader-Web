@@ -45,8 +45,8 @@ class Content extends Component {
           this.props.cards.map(card =>
             <Card key={ card.id }
               articleID={ card.id }
-              title={ card.title }
-              content={ card.content.substr(0, 80) }
+              title={ card.title.substr(0, 12) }
+              content={ card.content }
               picUrl={ card.picUrl }
               homeUrl={ card.homeUrl }
               read={ card.read }
@@ -235,6 +235,7 @@ class Main extends Component {
   render() {
     const feeds = this.state.feeds
     const cards = this.state.cards
+    const correntId = this.state.correntId
     const unreadNum = this.state.unreadNum
 
     return (
@@ -278,12 +279,12 @@ class Main extends Component {
           </Menu>
         </Sider>
         <Layout id="right-container">
-          <Header style={{ background: '#fff', padding: 0 }}>
+          <Header className="top-bar">
             <Icon className="trigger"
               type={ this.state.collapsed ? 'menu-unfold' : 'menu-fold' }
               onClick={ this.toggleCollapsed }
             />
-            <span className="now-list">{ folders[this.state.correntId].name }</span>
+            {/* <span>{ folders[correntId].name }</span> */}
             <span className="toolbar-right">
               <span className="trigger" onClick={ this.showConfirm.bind(this) }>
                 <Icon type="down-circle-o" />
