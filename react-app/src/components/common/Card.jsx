@@ -1,27 +1,42 @@
 import React, { Component } from 'react'
 import { Card, Icon, Tooltip, Popover, Button } from 'antd'
 
+import baseUrl from '../../common/util'
+import axios from 'axios'
+
 const { Meta } = Card
 
 class CardBlock extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isStarred: false,
-      isRead: false
+      isStarred: this.props.starred,
+      isRead: this.props.read
     }
   }
 
   toggleStar = () => {
-    this.setState({
-      isStarred: !this.state.isStarred
-    })
+    const basePath = baseUrl + '/feed/' + (this.state.isStarred ? 'unstar' : 'star')
+    axios.get(basePath + '?articleID=' + this.props.articleID)
+      .then(res => {
+        if (res.data === 'OK') {
+          this.setState({
+            isStarred: !this.state.isStarred
+          })
+        }
+      })
   }
 
   toggleRead = () => {
-    this.setState({
-      isRead: !this.state.isRead
-    })
+    const basePath = baseUrl + '/feed/' + (this.state.isRead ? 'unread' : 'read')
+    axios.get(basePath + '?articleID=' + this.props.articleID)
+      .then(res => {
+        if (res.data === 'OK') {
+          this.setState({
+            isRead: !this.state.isRead
+          })
+        }
+      })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -37,10 +52,10 @@ class CardBlock extends Component {
     const isStarred = this.state.isStarred
     let isRead = this.state.isRead
     
-    let icon = !isStarred ? 
+    let icon = !isStarred ?
       <Tooltip placement="bottomLeft" 
         title="Star article">
-        <Icon type="star-o" onClick={ this.toggleStar} size="200" />
+        <Icon type="star-o" onClick={ this.toggleStar } size="200" />
       </Tooltip> :
       <Tooltip placement="bottomLeft" 
         title="UnStar article">
@@ -49,12 +64,12 @@ class CardBlock extends Component {
       
     return (
       <Card id="card"
-        cover={<img alt="fst-pic" src={ this.props.src } />}
+        cover={<img alt="fst-pic" src={ this.props.picUrl } />}
         actions={[
           <div>{ icon }</div>, 
           <Tooltip placement="bottomLeft"
             title="Open in new tab">
-            <a target="_blank" href={ this.props.href }>
+            <a target="_blank" href={ this.props.homeUrl }>
               <Icon type="plus-square-o" />
             </a>
           </Tooltip>,
@@ -72,7 +87,7 @@ class CardBlock extends Component {
         }
       >
         <Meta title={ this.props.title }
-          description={ this.props.description }
+          description={ this.props.content }
         />
       </Card>
     )

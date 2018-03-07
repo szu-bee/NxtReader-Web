@@ -22,11 +22,15 @@ class NormalLoginForm extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        return axios.post(baseUrl + '/login', values)
+        return axios.post(baseUrl + '/login', values, {
+          withCredentials: true
+        })
           .then(res => {
+            document.cookie = res.data
+            console.log(document.cookie)
             this.setState({
               loginSucc: true
-            })
+            })           
           })
           .catch(err => {
             if (err.response.status === 400) {

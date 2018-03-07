@@ -3,6 +3,7 @@ import axios from 'axios'
 import { 
   Form, Input, Button, message
 } from 'antd'
+import _ from 'lodash'
 import baseUrl from '../../common/util'
 
 const FormItem = Form.Item
@@ -45,7 +46,7 @@ class RegistrationForm extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        return axios.post(baseUrl + '/regi', values)
+        return axios.post(baseUrl + '/regi', _.omit(values), ['confirm'])
           .then(res => {
             this.props.handleCancel()
             message.success('Registration succeed!')

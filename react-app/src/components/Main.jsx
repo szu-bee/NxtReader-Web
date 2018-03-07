@@ -1,123 +1,31 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon, Input, Tooltip, Modal } from 'antd'
+import axios from 'axios'
+import { 
+  Layout, Menu, Icon, Input, Tooltip, Modal, message
+} from 'antd'
 import Card from './common/Card'
+import baseUrl from '../common/util'
 
 const { Header, Sider } = Layout
 const { SubMenu } = Menu
 const Search = Input.Search
 const confirm = Modal.confirm
 
-const cards = [
-  {
-    id: 1,
-    title: 'Title1',
-    description: 'This is the description',
-    src: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg',
-    href: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg'
-  },
-  {
-    id: 2,
-    title: 'Title2',
-    description: 'This is the description',
-    src: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg',
-    href: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg'
-  },
-  {
-    id: 3,
-    title: 'Title3',
-    description: 'This is the description',
-    src: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg',
-    href: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg'
-  },
-  {
-    id: 4,
-    title: 'Title4',
-    description: 'This is the description',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-  },
-  {
-    id: 5,
-    title: 'Title5',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-  },
-  {
-    id: 6,
-    title: 'Title6',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-  },
-  {
-    id: 7,
-    title: 'Title1',
-    description: 'This is the description',
-    src: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg',
-    href: 'http://www.photocat.co.uk/images/galleries/images/184-8430-R.jpg'
-  },
-  {
-    id: 8,
-    title: 'Title2',
-    description: 'This is the description',
-    src: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg',
-    href: 'http://dompict.com/wp-content/uploads/2016/08/Blue-cat-3-Photo-2.jpg'
-  },
-  {
-    id: 9,
-    title: 'Title3',
-    description: 'This is the description',
-    src: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg',
-    href: 'http://www.wallpaperstop.com/wallpapers/animal-wallpapers/cat-wallpapers/cat-photo-1600x1200-0043.jpg'
-  },
-  {
-    id: 10,
-    title: 'Title4',
-    description: 'This is the description',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
-  },
-  {
-    id: 11,
-    title: 'Title5',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-  },
-  {
-    id: 12,
-    title: 'Title6',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-  }
-]
-
 const folders = [
   {
-    id: 1,
+    id: 'f1',
     iconType: 'file-text',
     name: 'All articles'
   },
   {
-    id: 2,
+    id: 'f2',
     iconType: 'star',
     name: 'Stars'
   },
   {
-    id: 3,
+    id: 'f3',
     iconType: 'smile',
     name: 'Recommendation'
-  }
-]
-
-const feeds = [
-  {
-    id: 's1',
-    name: 'feed1'
-  },
-  {
-    id: 's2',
-    name: 'feed2'
-  },
-  {
-    id: 's3',
-    name: 'feed3'
-  },
-  {
-    id: 's4',
-    name: 'feed4'
   }
 ]
 
@@ -133,13 +41,16 @@ class Content extends Component {
 
     return (
       <div className="content">
-        { 
+        {
           this.props.cards.map(card =>
-            <Card key={ card.id } 
+            <Card key={ card.id }
+              articleID={ card.id }
               title={ card.title }
-              description={ card.description }
-              src={ card.src }
-              href={ card.href }
+              content={ card.content.substr(0, 80) }
+              picUrl={ card.picUrl }
+              homeUrl={ card.homeUrl }
+              read={ card.read }
+              starred={ card.starred }
               isAllRead={ isAllRead }
             />
           )
@@ -156,7 +67,11 @@ class Main extends Component {
       collapsed: false,
       visible: false,
       isAllRead: false,
-      correntId: 0
+      correntId: 0,
+      feeds: [],
+      cards: [],
+      unreadNum: 0,
+      nowFeedID: 'f1'
     }
   }
 
@@ -172,6 +87,28 @@ class Main extends Component {
     })
   }
 
+  postUrl = feedUrl => {
+    console.log(feedUrl)
+    return axios.post(baseUrl + '/feed/add', { feedUrl })
+      .then(res => {
+        if (res.data === 'Already Existed') {
+          message.warn('Feed Already Existed!')
+        } else {
+          // Modal.success({
+          //   'content': 'Added! Please refresh page.'
+          // })
+          window.location.reload()
+        }
+      })
+      .catch(err => {
+        if (err.response.status === 500) {
+          message.error('Server error!')
+        } else {
+          message.error('Can not add this feed.')
+        }
+      })
+  }
+
   showModal = () => {
     this.setState({
       visible: !this.state.visible
@@ -179,9 +116,12 @@ class Main extends Component {
   }
 
   ok = () => {
-    this.setState({
-      isAllRead: true
-    })
+    return axios.post(baseUrl + '/feed/allread?feedID=' + this.state.nowFeedID)
+      .then(res => {
+        this.setState({
+          isAllRead: true
+        })
+      })
   }
 
   cancel = () => {
@@ -200,13 +140,103 @@ class Main extends Component {
     })
   }
 
-  toggleSelectDir = (index) => {
+  toggleSelectDir = index => {
     this.setState({
       correntId: index
     })
   }
 
+  componentDidMount() {
+    if (this.state.nowFeedID === 'f1') {
+      axios.get(baseUrl + '/feed/fetch')
+        .then(res => {
+          console.table(res.data)
+
+          this.setState({
+            nowFeedID: 'f1',
+            feeds: res.data
+          })
+
+          axios.get(baseUrl + '/articles')
+            .then(art => {
+              console.table(art.data)
+
+              this.setState({
+                cards: art.data
+              })
+
+              axios.get(baseUrl + "/articles/unreadcnt")
+                .then(cnt => {
+                  this.setState({
+                    unreadNum: cnt.data  
+                  })
+                })
+              })
+          })
+    }
+  }
+
+  nowFeed = (item, key, keyPath) => {
+    let id = item.key
+    
+    if (id === 'f1') {
+      axios.get(baseUrl + '/articles')
+        .then(res => {
+          console.table(res.data)
+
+          this.setState({
+            nowFeedID: 'f1',
+            cards: res.data
+          })
+
+          axios.get(baseUrl + "/articles/unreadcnt")
+            .then(cnt => {
+              this.setState({
+                unreadNum: cnt.data
+              })
+            })
+        })
+    } else if (id === 'f2') {
+      axios.get(baseUrl + '/article/stars')
+        .then(res => {
+          this.setState({
+            nowFeedID: 'f2',
+            cards: res.data,
+            unreadNum: 0
+          })
+        })
+    }  else if (id === 'f3') {
+      //
+    } else {
+      axios.get(baseUrl + '/article/get?feedID=' + id)
+        .then(res => {
+          console.table(res.data)
+
+          this.setState({
+            nowFeedID: id,
+            cards: res.data
+          })
+
+          axios.get(baseUrl + "/feed/unreadcnt?feedID=" + id)
+            .then(cnt => {
+              this.setState({
+                nowFeedID: id,
+                unreadNum: cnt.data
+              })
+
+              if (cnt.data === 0) {
+                message.info('Everything read.')
+              }
+        })
+      })
+    }
+  }
+
   render() {
+    const feeds = this.state.feeds
+    const cards = this.state.cards
+    const unreadNum = this.state.unreadNum
+
     return (
       <Layout id="Main">
         <Sider id="sider"
@@ -216,14 +246,15 @@ class Main extends Component {
           <Search className="search"
             placeholder="Subscribe"
             onClick={ this.toggleSearch }
-            onSearch={ value => console.log(value) }
+            onSearch={ value => this.postUrl(value) }
           />
           <Menu theme="dark" mode="inline" 
-              defaultSelectedKeys={['1']}>
+            defaultSelectedKeys={['1']}
+            onClick={ this.nowFeed }
+          >
             {
               folders.map((folder, index) =>
-                <Menu.Item key={ folder.id }
-                    onClick={ this.toggleSelectDir.bind(this, index) }>
+                <Menu.Item key={ folder.id }>
                   <Icon type={ folder.iconType } />
                   <span>{ folder.name }</span>
                 </Menu.Item>
@@ -236,8 +267,8 @@ class Main extends Component {
                     <span>Subscriptions</span>
                   </div>
                 }>
-              { 
-                feeds.map(feed => 
+              {
+                feeds.map(feed =>
                   <Menu.Item key={ feed.id }>
                     { feed.name }
                   </Menu.Item>
@@ -252,14 +283,13 @@ class Main extends Component {
               type={ this.state.collapsed ? 'menu-unfold' : 'menu-fold' }
               onClick={ this.toggleCollapsed }
             />
-            <Icon type="reload" className="trigger" />
             <span className="now-list">{ folders[this.state.correntId].name }</span>
             <span className="toolbar-right">
               <span className="trigger" onClick={ this.showConfirm.bind(this) }>
                 <Icon type="down-circle-o" />
                 <span className="mark">Mark all as read</span>
               </span>
-              <span className="trigger">100 Unread</span>
+              <span className="trigger">{ unreadNum } Unread</span>
               <span>
                 <Tooltip placement="bottomRight" title="Notifications">
                   <Icon type="notification" className="trigger" />
