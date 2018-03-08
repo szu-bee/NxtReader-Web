@@ -62,7 +62,7 @@ class CardBlock extends Component {
         <Icon type="star" onClick={ this.toggleStar } />
       </Tooltip>
 
-    if (this.props.picUrl !== null) {
+    if (this.props.picUrl && this.props.picUrl.slice(0, 5) === 'http') {
       return (
         <Card id="card"
           cover={<img alt="fst-pic" src={ this.props.picUrl } />}
