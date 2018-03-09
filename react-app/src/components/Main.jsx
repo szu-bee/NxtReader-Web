@@ -205,8 +205,21 @@ class Main extends Component {
             unreadNum: 0
           })
         })
-    }  else if (id === 'f3') {
-      //
+    } else if (id === 'f3') {
+      axios.get(baseUrl + '/article/rec')
+        .then(res => {
+          this.setState({
+            nowFeedID: 'f3',
+            cards: res.data
+          })
+
+          axios.get(baseUrl + "/articles/unreadcnt")
+            .then(cnt => {
+              this.setState({
+                unreadNum: cnt.data
+              })
+            })
+        })
     } else {
       axios.get(baseUrl + '/article/get?feedID=' + id)
         .then(res => {
@@ -284,7 +297,7 @@ class Main extends Component {
               type={ this.state.collapsed ? 'menu-unfold' : 'menu-fold' }
               onClick={ this.toggleCollapsed }
             />
-            {/* <span>{ folders[correntId].name }</span> */}
+            <span>{ folders[correntId].name }</span>
             <span className="toolbar-right">
               <span className="trigger" onClick={ this.showConfirm.bind(this) }>
                 <Icon type="down-circle-o" />
